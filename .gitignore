@@ -1,0 +1,8 @@
+# Xcode user-specific settings
+**/xcuserdata/
+
+# macOS
+.DS_Store
+
+# Xcode build output
+DerivedData/
