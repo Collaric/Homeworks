@@ -1,4 +1,5 @@
-let manager = TaskManager(tasks: seedTasks())
+let manager = TaskManager(tasks: TaskSeeder.seedTasks())
+let ui = ConsoleUI()
 var isRunning = true
 while isRunning {
     print("""
@@ -14,22 +15,22 @@ while isRunning {
             0. Выход
         """)
     
-    guard let choice = readInt(prompt: "Выберите действие:") else {
+    guard let choice = ui.readInt(prompt: "Выберите действие:") else {
         continue
     }
     
     switch choice {
     case 1:
-        addTask(to: manager)
+        ui.addTask(to: manager)
     case 2:
-        removeTask(from: manager)
+        ui.removeTask(from: manager)
     case 3:
-        toggleTask(in: manager)
+        ui.toggleTask(in: manager)
     case 4:
-        filterTasks(in: manager)
+        ui.filterTasks(in: manager)
     case 5:
         print("\nВсе задачи:")
-        printTasks(manager.allTasks)
+        ui.printTasks(manager.allTasks)
     case 0:
         isRunning = false
         print("Программа завершена.")
